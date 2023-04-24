@@ -1,10 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+
+  function getEmployees() {
+    let host = 'http://localhost:8000/api/';
+    let endpoint = 'employees';
+    let url = host + endpoint;
+
+    fetch(url)
+    .then(result => result.json())
+    .then(response => {
+      console.log(response)
+    });
+
+  }
+  useEffect( () => {
+    getEmployees();
+  });
+  
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Zolhum</Text>
+
+
+
       <StatusBar style="auto" />
     </View>
   );
